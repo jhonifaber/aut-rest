@@ -22,7 +22,7 @@ public class Talk {
     @Id
     private Long id;
 
-    private String topic;
+    private String name;
 
     private LocalDate date;
 

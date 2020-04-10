@@ -1,18 +1,17 @@
 package com.aut.prueba.endpoints;
 
-import com.aut.prueba.RestApplication;
 import com.aut.prueba.model.Room;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
-@RunWith(SpringRunner.class)// extendWith es de Junit 5, @Runwith de Junit 4
-@SpringBootTest(classes = RestApplication.class)
+@ExtendWith(SpringExtension.class)
+@SpringBootTest
 public class TalkEndpointIT {
 
     @Autowired
