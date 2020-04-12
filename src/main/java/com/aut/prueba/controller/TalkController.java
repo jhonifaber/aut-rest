@@ -2,7 +2,7 @@ package com.aut.prueba.controller;
 
 import org.springframework.web.bind.annotation.*;
 
-@RestController()
+@RestController
 @RequestMapping("/talks")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET, RequestMethod.POST})
 public class TalkController {
