@@ -1,4 +1,4 @@
-package com.aut.prueba.controller;
+package com.aut.prueba.web.controller;
 
 import org.springframework.web.bind.annotation.*;
 
