@@ -16,7 +16,7 @@ class RoomServiceTest {
     private final RoomService sut = new RoomService(roomRepository);
 
     @Test
-    public void getRooms() {
+    public void get_rooms() {
         List<Room> expectedRooms = List.of(Room.builder().build());
         when(roomRepository.findAll()).thenReturn(expectedRooms);
 

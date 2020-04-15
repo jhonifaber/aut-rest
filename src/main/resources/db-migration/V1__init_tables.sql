@@ -8,7 +8,7 @@ create table room
 create table speaker
 (
     id     int auto_increment,
-    name int null,
+    name varchar(100) null,
     constraint speaker_pk primary key (id)
 );
 
