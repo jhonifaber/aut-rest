@@ -24,4 +24,10 @@ public class RoomController {
         List<Room> rooms = roomService.getRooms();
         return rooms.stream().map(roomMapper::convertToRoomDto).collect(Collectors.toList());
     }
+
+    @PostMapping
+    public void createRoom(@RequestBody RoomDto roomDto) {
+        Room room = roomMapper.convertToRoom(roomDto);
+        roomService.createRoom(room);
+    }
 }
