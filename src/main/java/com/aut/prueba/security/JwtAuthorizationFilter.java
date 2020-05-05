@@ -14,8 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+
 @Component
-public class JwtRequestFilter extends OncePerRequestFilter {
+public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     private static final String HEADER_TOKEN_PREFIX = "Bearer ";
     private static final String HEADER_AUTHORIZATION_KEY = "Authorization";
