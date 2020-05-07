@@ -1,7 +1,6 @@
 package com.aut.prueba.security;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
