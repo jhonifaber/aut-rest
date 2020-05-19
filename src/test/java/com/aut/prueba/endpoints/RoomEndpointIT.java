@@ -15,7 +15,7 @@ public class RoomEndpointIT extends PruebaEndpointIT {
 
     @Test
     public void room_endpoint_should_return_all_rooms() {
-        HttpHeaders headers = new HttpHeaders();
+        HttpHeaders headers = makeRequestLogin();
         HttpEntity entity = new HttpEntity(headers);
 
         ResponseEntity<List<RoomDto>> response = getRestTemplate().exchange(createUrlWith("/rooms"), HttpMethod.GET, entity, new ParameterizedTypeReference<List<RoomDto>>() {
