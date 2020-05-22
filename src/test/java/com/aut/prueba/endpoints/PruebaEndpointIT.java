@@ -4,6 +4,7 @@ import com.aut.prueba.security.AuthenticationRequest;
 import com.aut.prueba.security.AuthenticationResponse;
 import com.aut.prueba.service.DatabaseService;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.TestInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -28,7 +29,7 @@ public abstract class PruebaEndpointIT {
     private int port;
 
     @BeforeAll
-    private void initDatabase() {
+    protected void initDatabase() {
         databaseService.fill();
     }
 

@@ -4,6 +4,7 @@ import com.aut.prueba.web.presentation.RoomDto;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
+import org.springframework.test.annotation.DirtiesContext;
 
 import java.util.List;
 
@@ -13,8 +14,21 @@ import static org.hamcrest.core.IsEqual.equalTo;
 
 public class RoomEndpointIT extends PruebaEndpointIT {
 
+
     @Test
     public void room_endpoint_should_return_all_rooms() {
+        HttpHeaders headers = makeRequestLogin();
+        RoomDto body = RoomDto.builder().number(12L).build();
+        HttpEntity entity = new HttpEntity(body,headers);
+
+        ResponseEntity<Void> response = getRestTemplate().exchange(createUrlWith("/rooms"), HttpMethod.POST, entity, Void.class);
+
+        assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
+        initDatabase();
+    }
+
+    @Test
+    public void room_endpoint_should_create_new_room() {
         HttpHeaders headers = makeRequestLogin();
         HttpEntity entity = new HttpEntity(headers);
 
