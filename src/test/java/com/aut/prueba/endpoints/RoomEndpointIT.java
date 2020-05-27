@@ -16,7 +16,7 @@ public class RoomEndpointIT extends PruebaEndpointIT {
 
 
     @Test
-    public void room_endpoint_should_return_all_rooms() {
+    public void room_endpoint_should_create_new_room() {
         HttpHeaders headers = makeRequestLogin();
         RoomDto body = RoomDto.builder().number(12L).build();
         HttpEntity entity = new HttpEntity(body,headers);
@@ -24,11 +24,11 @@ public class RoomEndpointIT extends PruebaEndpointIT {
         ResponseEntity<Void> response = getRestTemplate().exchange(createUrlWith("/rooms"), HttpMethod.POST, entity, Void.class);
 
         assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));
-        initDatabase();
+        rollback();
     }
 
     @Test
-    public void room_endpoint_should_create_new_room() {
+    public void room_endpoint_should_return_all_rooms() {
         HttpHeaders headers = makeRequestLogin();
         HttpEntity entity = new HttpEntity(headers);
 
