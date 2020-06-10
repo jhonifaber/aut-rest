@@ -18,6 +18,9 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles(profiles = "test")
+//In Java, static fields belongs to the class, not instances of the class. Thus, all instances of any class will access
+// the same static field variable. A non-static field value can be different for every object (instance) of a class.
+//dicho esto, podemos hacerlo usando static en el field o usando esta anotación.
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @Testcontainers
 public abstract class PruebaEndpointIT {
@@ -32,7 +35,7 @@ public abstract class PruebaEndpointIT {
     private int port;
 
     @Container
-    public static final MySQLContainer mysql = new MySQLContainer("mysql:latest");
+    private static final MySQLContainer mysql = new MySQLContainer("mysql:latest");
 
     @BeforeAll
     private void initDatabase() {
