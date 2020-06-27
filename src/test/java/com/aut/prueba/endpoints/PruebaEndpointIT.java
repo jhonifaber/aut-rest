@@ -21,7 +21,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 //In Java, static fields belongs to the class, not instances of the class. Thus, all instances of any class will access
 // the same static field variable. A non-static field value can be different for every object (instance) of a class.
 //dicho esto, podemos hacerlo usando static en el field o usando esta anotación.
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@TestInstance(TestInstance.Lifecycle.PER_CLASS) // esto es para poder usar el @AeforeAll
 @Testcontainers
 public abstract class PruebaEndpointIT {
 
@@ -34,9 +34,11 @@ public abstract class PruebaEndpointIT {
     @LocalServerPort
     private int port;
 
+    //con static final lanza el container una vez por test class, sin static container una vez por metodo.
     @Container
     private static final MySQLContainer mysql = new MySQLContainer("mysql:latest");
 
+    // TODO fix: por cada test class, lanza esta config
     @BeforeAll
     private void initDatabase() {
         System.setProperty("spring.datasource.url", mysql.getJdbcUrl());
