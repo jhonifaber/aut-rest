@@ -34,18 +34,21 @@ public abstract class PruebaEndpointIT {
     @LocalServerPort
     private int port;
 
-    //con static final lanza el container una vez por test class, sin static container una vez por metodo.
-    @Container
-    private static final MySQLContainer mysql = new MySQLContainer("mysql:latest");
+    private static final MySQLContainer mysql;
 
-    // TODO fix: por cada test class, lanza esta config
-    @BeforeAll
-    private void initDatabase() {
+    static {
+        mysql = new MySQLContainer("mysql:latest");
+        mysql.start();
         System.setProperty("spring.datasource.url", mysql.getJdbcUrl());
         System.setProperty("spring.datasource.username", mysql.getUsername());
         System.setProperty("spring.datasource.password", mysql.getPassword());
+    }
+
+    @BeforeAll
+    public void initDatabase(){
         databaseService.fill();
     }
+
 
     public String createUrlWith(String endpoint) {
         return "http://localhost:" + port + endpoint;
